@@ -31,7 +31,7 @@ export type State = {
     status?: string[];
   };
   message?: string | null;
-}
+};
 
 export async function createInvoice(prevState: State, formData: FormData) {
   const validatedFields = CreateInvoice.safeParse({
@@ -52,7 +52,7 @@ export async function createInvoice(prevState: State, formData: FormData) {
   const date = new Date().toISOString().split('T')[0];
 
   try {
-    await sql `
+    await sql`
       INSERT INTO invoices (customer_id, amount, status, date)
       VALUES (${customerId}, ${amountInCents}, ${status}, ${date})
       `;
@@ -67,8 +67,8 @@ export async function createInvoice(prevState: State, formData: FormData) {
 }
 
 export async function updateInvoice(
-  id: string, 
-  prevState: State, 
+  id: string,
+  prevState: State,
   formData: FormData,
 ) {
   const validatedFields = UpdateInvoice.safeParse({
